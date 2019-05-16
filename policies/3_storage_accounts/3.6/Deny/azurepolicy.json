@@ -16,7 +16,7 @@
                         },
                         {
                             "not": {
-                                "field": "Microsoft.Storage/storageAccounts/blobServices/default.containers.publicAccess",
+                                "field": "Microsoft.Storage/storageAccounts/blobServices/containers/publicAccess",
                                 "equals": "None"
                             }
                         }
