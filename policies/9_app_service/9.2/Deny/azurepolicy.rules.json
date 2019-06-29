@@ -8,10 +8,10 @@
             {
                 "field": "Microsoft.Web/sites/httpsOnly",
                 "equals": true
-            }        
+            }
         ]
     },
     "then": {
-        "effect": "[parameters('policyEffect')]"
+        "effect": "[parameters('effect')]"
     }
 }

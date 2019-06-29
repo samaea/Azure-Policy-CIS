@@ -1,20 +1,24 @@
 {
     "properties": {
-        "displayName": "9.2 - AuditIfNotExists",
-        "description": "9.2 - AuditIfNotExists - Ensure web app redirects all HTTP traffic to HTTPS in Azure App Service",
+        "displayName": "Ensure web app redirects all HTTP traffic to HTTPS in Azure App Service 9.2.",
+        "description": "Azure Web Apps allows sites to run under both HTTP and HTTPS by default. Web apps can be accessed by anyone using non-secure HTTP links by default. Non-secure HTTP requests can be restricted and all HTTP requests redirected to the secure HTTPS port. It is recommended to enforce HTTPS-only traffic.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
         "parameters": {
-            "policyEffect": {
+            "effect": {
                 "type": "String",
                 "metadata": {
-                  "displayName": "Effect",
-                  "description": "Enable or disable the execution of the policy"
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
                 },
                 "allowedValues": [
-                  "AuditIfNotExists",
-                  "Disabled"
+                    "AuditIfNotExists",
+                    "Disabled"
                 ],
                 "defaultValue": "AuditIfNotExists"
-              }
+            }
         },
         "policyRule": {
             "if": {
@@ -26,7 +30,7 @@
                 ]
             },
             "then": {
-                "effect": "[parameters('policyEffect')]",
+                "effect": "[parameters('effect')]",
                 "details": {
                     "type": "Microsoft.Web/sites",
                     "name": "[field('name')]",
@@ -35,7 +39,7 @@
                             {
                                 "field": "Microsoft.Web/sites/httpsOnly",
                                 "equals": true
-                            }                    
+                            }
                         ]
                     }
                 }

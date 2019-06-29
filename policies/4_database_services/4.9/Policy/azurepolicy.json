@@ -1,0 +1,27 @@
+{
+    "properties": {
+        "displayName": "Ensure that 'Data encryption' is set to 'On' on a SQL Database. CIS Control 4.9",
+        "description": "Enable Transparent Data Encryption on every SQL server.",
+        "mode": "All",
+        "metadata": {
+            "category": "MDT-Custom-SQL-Databases"
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Sql/servers/databases/transparentDataEncryption"
+                    },
+                    {
+                        "field": "Microsoft.Sql/transparentDataEncryption.status",
+                        "notEquals": "enabled"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}

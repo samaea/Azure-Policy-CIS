@@ -8,7 +8,7 @@
         ]
     },
     "then": {
-        "effect": "[parameters('policyEffect')]",
+        "effect": "[parameters('effect')]",
         "details": {
             "type": "Microsoft.Web/sites",
             "name": "[field('name')]",

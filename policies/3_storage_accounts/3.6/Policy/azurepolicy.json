@@ -1,0 +1,42 @@
+{
+    "properties": {
+        "displayName": "Ensure that 'Public access level' is set to Private for blob containers. CIS Control 3.6",
+        "description": "Disable anonymous access to blob containers.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "Deny",
+                    "Audit"
+                ]
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Storage/storageAccounts"
+                    },
+                    {
+                        "not": {
+                            "field": "Microsoft.Storage/storageAccounts/blobServices/containers/publicAccess",
+                            "equals": "None"
+                        }
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}

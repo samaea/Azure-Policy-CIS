@@ -1,0 +1,46 @@
+{
+    "properties": [
+        {
+            "displayName": "Ensure that Azure Active Directory Admin is configured. CIS Control 4.8",
+            "description": "Use Azure Active Directory Authentication for authentication with SQL Database.",
+            "mode": "All",
+            "metadata": {
+                "category": "CIS"
+            },
+            "parameters": {
+                "effect": {
+                    "type": "String",
+                    "metadata": {
+                        "displayName": "Effect",
+                        "description": "Enable or disable the execution of the policy"
+                    },
+                    "allowedValues": [
+                        "Deny",
+                        "Audit"
+                    ]
+                }
+            },
+            "policyRule": {
+                "if": {
+                    "allOf": [
+                        {
+                            "field": "type",
+                            "equals": "Microsoft.Sql/servers/administrators"
+                        },
+                        {
+                            "field": "Microsoft.Sql/servers/administrators/administratorType",
+                            "equals": "ActiveDirectory"
+                        },
+                        {
+                            "field": "Microsoft.Sql/servers/administrators/login",
+                            "equals": ""
+                        }
+                    ]
+                },
+                "then": {
+                    "effect": "[parameters('effect')]"
+                }
+            }
+        }
+    ]
+}

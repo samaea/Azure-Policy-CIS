@@ -1,0 +1,21 @@
+{
+    "emailAddress": {
+        "type": "String",
+        "metadata": {
+            "displayName": "Email Address",
+            "description": "The email address that must exist in the list to allow policy to pass"
+        }
+    },
+    "effect": {
+        "type": "string",
+        "defaultValue": "Audit",
+        "allowedValues": [
+            "Audit",
+            "Disabled"
+        ],
+        "metadata": {
+            "displayName": "Effect",
+            "description": "Enable or disable the execution of the policy"
+        }
+    }
+}
