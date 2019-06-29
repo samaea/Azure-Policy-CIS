@@ -38,7 +38,7 @@
                         "allOf": [
                             {
                                 "field": "Microsoft.Web/sites/config/siteAuthEnabled",
-                                "equals": true
+                                "equals": "true"
                             }
                         ]
                     }
