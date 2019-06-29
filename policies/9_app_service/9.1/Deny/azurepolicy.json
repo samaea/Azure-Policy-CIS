@@ -28,8 +28,8 @@
                     },
                     {
                         "field": "Microsoft.Web/sites/config/siteAuthEnabled",
-                        "equals": true
-                    }    
+                        "notEquals": "true"
+                    }
                 ]
             },
             "then": {
