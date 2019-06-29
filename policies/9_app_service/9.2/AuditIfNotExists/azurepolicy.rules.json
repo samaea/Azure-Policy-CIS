@@ -14,7 +14,7 @@
         ]
     },
     "then": {
-        "effect": "[parameters('policyEffect')]",
+        "effect": "[parameters('effect')]",
         "details": {
             "type": "Microsoft.Web/sites",
             "existenceCondition": {
@@ -22,7 +22,7 @@
                     {
                         "field": "Microsoft.Web/sites/httpsOnly",
                         "equals": true
-                    }                    
+                    }
                 ]
             }
         }

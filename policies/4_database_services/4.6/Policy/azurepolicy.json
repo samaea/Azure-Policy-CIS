@@ -1,0 +1,55 @@
+{
+    "properties": {
+        "displayName": "Ensure that 'Send alerts to' is set. CIS Control 4.6",
+        "description": "Provide the email address where alerts will be sent when anomalous activities are detected on SQL servers.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "Deny",
+                    "Audit"
+                ]
+            },
+            "emailAddress": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Email Address",
+                    "description": "The email address that must exist in the list to allow policy to pass"
+                }
+            },
+            "policyRule": {
+                "if": {
+                    "allOf": [
+                        {
+                            "field": "type",
+                            "equals": "Microsoft.Sql/servers/securityAlertPolicies"
+                        },
+                        {
+                            "field": "name",
+                            "equals": "default"
+                        },
+                        {
+                            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses",
+                            "exists": "true"
+                        },
+                        {
+                            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+                            "notEquals": "[parameters('emailAddress')]"
+                        }
+                    ]
+                },
+                "then": {
+                    "effect": "deny"
+                }
+            }
+        }
+    }
+}

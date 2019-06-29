@@ -1,0 +1,17 @@
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "equals": "Microsoft.Sql/servers/encryptionProtector"
+            },
+            {
+                "field": "Microsoft.Sql/servers/encryptionProtector/serverKeyName",
+                "notEquals": "ServiceManaged"
+            }
+        ]
+    },
+    "then": {
+        "effect": "Audit"
+    }
+}

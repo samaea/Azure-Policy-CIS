@@ -1,9 +1,13 @@
 {
     "properties": {
-        "displayName": "9.4 - AuditIfNotExists",
-        "description": "9.4 - AuditIfNotExists - Ensure the web app has 'Client Certificates (Incoming client certificates)' set to 'On'",
+        "displayName": "Ensure the web app has 'Client Certificates (Incoming client certificates)' set to 'On' 9.4.",
+        "description": "Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
         "parameters": {
-            "policyEffect": {
+            "effect": {
                 "type": "String",
                 "metadata": {
                     "displayName": "Effect",
@@ -26,7 +30,7 @@
                 ]
             },
             "then": {
-                "effect": "[parameters('policyEffect')]",
+                "effect": "[parameters('effect')]",
                 "details": {
                     "type": "Microsoft.Web/sites",
                     "name": "[field('name')]",

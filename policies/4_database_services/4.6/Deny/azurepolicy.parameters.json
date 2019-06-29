@@ -1,9 +1,0 @@
-{
-    "emailAddress": {
-        "type": "String",
-        "metadata": {
-            "displayName": "Email Address",
-            "description": "The email address that must exist in the list to allow policy to pass"
-        }
-    }
-}

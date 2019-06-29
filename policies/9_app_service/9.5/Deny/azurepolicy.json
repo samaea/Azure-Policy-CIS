@@ -1,9 +1,13 @@
 {
     "properties": {
-        "displayName": "9.5 - Deny",
-        "description": "9.5 - Deny - Ensure that Register with Azure Active Directory is enabled on App Service",
+        "displayName": "Ensure that Register with Azure Active Directory is enabled on App Service 9.5.",
+        "description": "Managed service identity in App Service makes the app more secure by eliminating secrets from the app, such as credentials in the connection strings. When registering with Azure Active Directory in the app service, the app will connect to other Azure services securely without the need of username and passwords.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
         "parameters": {
-            "policyEffect": {
+            "effect": {
                 "type": "String",
                 "metadata": {
                     "displayName": "Effect",
@@ -30,7 +34,7 @@
                 ]
             },
             "then": {
-                "effect": "[parameters('policyEffect')]"
+                "effect": "[parameters('effect')]"
             }
         }
     }

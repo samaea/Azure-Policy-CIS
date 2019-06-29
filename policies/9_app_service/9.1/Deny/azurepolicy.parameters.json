@@ -8,7 +8,6 @@
         "allowedValues": [
             "Deny",
             "Disabled"
-        ],
-        "defaultValue": "Deny"
+        ]
     }
 }

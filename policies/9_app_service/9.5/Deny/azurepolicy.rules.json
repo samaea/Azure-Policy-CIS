@@ -12,6 +12,6 @@
         ]
     },
     "then": {
-        "effect": "[parameters('policyEffect')]"
+        "effect": "[parameters('effect')]"
     }
 }

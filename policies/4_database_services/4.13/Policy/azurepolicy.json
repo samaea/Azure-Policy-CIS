@@ -1,0 +1,40 @@
+{
+    "properties": {
+        "displayName": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for PostgreSQL Database Server 4.13.",
+        "description": "Enable SSL connection on PostgreSQL Servers.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "Deny",
+                    "Audit"
+                ]
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.DBforPostgreSQL/servers"
+                    },
+                    {
+                        "field": "Microsoft.DBforPostgreSQL/servers/sslEnforcement",
+                        "notEquals": "Enabled"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}
