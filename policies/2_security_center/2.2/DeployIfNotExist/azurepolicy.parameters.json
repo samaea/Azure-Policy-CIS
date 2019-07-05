@@ -1,9 +1,9 @@
 {
     "effect": {
         "type": "string",
-        "defaultValue": "auditIfNotExists",
+        "defaultValue": "deployIfNotExists",
         "allowedValues": [
-            "auditIfNotExists",
+            "deployIfNotExists",
             "Disabled"
         ],
         "metadata": {

@@ -1,0 +1,26 @@
+{
+    "properties": {
+        "displayName": "Ensure that a Log Profile exists. CIS Control 5.1.1",
+        "description": "Enable log profile for exporting activity logs.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "Type",
+                        "equals": "Microsoft.Resources/subscriptions"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "auditIfNotExists",
+                "details": {
+                    "type": "Microsoft.Insights/logprofiles"
+                }
+            }
+        }
+    }
+}

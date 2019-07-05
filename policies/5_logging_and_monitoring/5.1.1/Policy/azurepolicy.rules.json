@@ -1,0 +1,16 @@
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "Type",
+                "equals": "Microsoft.Resources/subscriptions"
+            }
+        ]
+    },
+    "then": {
+        "effect": "auditIfNotExists",
+        "details": {
+            "type": "Microsoft.Insights/logprofiles"
+        }
+    }
+}

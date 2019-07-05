@@ -1,0 +1,62 @@
+{
+    "properties": {
+        "displayName": "Ensure audit profile captures all the activities 5.1.3",
+        "description": "The log profile should be configured to export all activities from the control/management plane.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "Deny",
+                    "Audit"
+                ]
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Insights/logprofiles"
+                    },
+                    {
+                        "field": "name",
+                        "equals": "default"
+                    },
+                    {
+                        "anyOf": [
+                            {
+                                "field": "Microsoft.Insights/logProfiles/categories[*]",
+                                "notIn": [
+                                    "Write"
+                                ]
+                            },
+                            {
+                                "field": "Microsoft.Insights/logProfiles/categories[*]",
+                                "notIn": [
+                                    "Delete"
+                                ]
+                            },
+                            {
+                                "field": "Microsoft.Insights/logProfiles/categories[*]",
+                                "notIn": [
+                                    "Action"
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}
