@@ -6,6 +6,31 @@
         "metadata": {
             "category": "CIS"
         },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Sql/servers/securityAlertPolicies"
+                    },
+                    {
+                        "field": "name",
+                        "equals": "default"
+                    },
+                    {
+                        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses",
+                        "exists": "true"
+                    },
+                    {
+                        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+                        "notEquals": "[parameters('emailAddress')]"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        },
         "parameters": {
             "effect": {
                 "type": "String",
@@ -23,31 +48,6 @@
                 "metadata": {
                     "displayName": "Email Address",
                     "description": "The email address that must exist in the list to allow policy to pass"
-                }
-            },
-            "policyRule": {
-                "if": {
-                    "allOf": [
-                        {
-                            "field": "type",
-                            "equals": "Microsoft.Sql/servers/securityAlertPolicies"
-                        },
-                        {
-                            "field": "name",
-                            "equals": "default"
-                        },
-                        {
-                            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses",
-                            "exists": "true"
-                        },
-                        {
-                            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
-                            "notEquals": "[parameters('emailAddress')]"
-                        }
-                    ]
-                },
-                "then": {
-                    "effect": "deny"
                 }
             }
         }

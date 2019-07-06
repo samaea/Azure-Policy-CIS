@@ -4,7 +4,20 @@
         "description": "Enable Transparent Data Encryption on every SQL server.",
         "mode": "All",
         "metadata": {
-            "category": "MDT-Custom-SQL-Databases"
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "Deny",
+                    "Audit"
+                ]
+            }
         },
         "policyRule": {
             "if": {

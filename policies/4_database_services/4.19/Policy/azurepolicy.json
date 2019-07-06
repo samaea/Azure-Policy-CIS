@@ -6,13 +6,26 @@
         "metadata": {
             "category": "CIS"
         },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "auditIfNotExists",
+                    "Disabled"
+                ]
+            }
+        },
         "policyRule": {
             "if": {
                 "field": "type",
                 "equals": "Microsoft.SQL/servers"
             },
             "then": {
-                "effect": "auditIfNotExists",
+                "effect": "[parameters('effect')]",
                 "details": {
                     "type": "Microsoft.SQL/servers/administrators"
                 }
