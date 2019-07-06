@@ -15,7 +15,8 @@
                 },
                 "allowedValues": [
                     "Deny",
-                    "Audit"
+                    "Audit",
+                    "Disabled"
                 ]
             }
         },
