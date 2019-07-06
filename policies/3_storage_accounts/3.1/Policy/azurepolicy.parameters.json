@@ -3,6 +3,7 @@
         "type": "string",
         "defaultValue": "Audit",
         "allowedValues": [
+            "Deny",
             "Audit",
             "Disabled"
         ],
