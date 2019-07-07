@@ -35,8 +35,8 @@
                     "existenceCondition": {
                         "allOf": [
                             {
-                                "field": "type",
-                                "equals": "Microsoft.Security/autoProvisioningSettings"
+                                "field": "Microsoft.Security/AutoProvisioningSettings/autoProvision",
+                                "notEquals": "On"
                             }
                         ]
                     }
