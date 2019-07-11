@@ -3,7 +3,7 @@
         "allOf": [
             {
                 "field": "type",
-                "equals": "Microsoft.Web/sites"
+                "equals": "Microsoft.Web/sites/config"
             },
             {
                 "field": "Microsoft.Web/sites/config/minTlsVersion",

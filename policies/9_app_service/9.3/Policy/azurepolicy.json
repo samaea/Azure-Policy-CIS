@@ -14,10 +14,10 @@
                     "description": "Enable or disable the execution of the policy"
                 },
                 "allowedValues": [
-                    "Deny",
+                    "Audit",
                     "Disabled"
                 ],
-                "defaultValue": "Deny"
+                "defaultValue": "Audit"
             },
             "minTLSVersion": {
                 "type": "string",
@@ -33,7 +33,7 @@
                 "allOf": [
                     {
                         "field": "type",
-                        "equals": "Microsoft.Web/sites"
+                        "equals": "Microsoft.Web/sites/config"
                     },
                     {
                         "field": "Microsoft.Web/sites/config/minTlsVersion",
