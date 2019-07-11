@@ -6,8 +6,8 @@
                 "equals": "Microsoft.Web/sites"
             },
             {
-                "field": "Microsoft.Web/sites/config/managedServiceIdentityId",
-                "exists": true
+                "field": "Microsoft.Web/sites/clientCertEnabled",
+                "notEquals": "true"
             }
         ]
     },

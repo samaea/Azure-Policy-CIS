@@ -6,8 +6,8 @@
                 "equals": "Microsoft.Web/sites"
             },
             {
-                "field": "Microsoft.Web/sites/clientCertEnabled",
-                "equals": true
+                "field": "Microsoft.Web/sites/config/minTlsVersion",
+                "equals": "[parameters('minTLSVersion')]"
             }
         ]
     },

@@ -28,7 +28,7 @@
                     },
                     {
                         "field": "Microsoft.Sql/servers/auditingSettings/retentionDays",
-                        "notEquals": "365"
+                        "greater": "90"
                     }
                 ]
             },

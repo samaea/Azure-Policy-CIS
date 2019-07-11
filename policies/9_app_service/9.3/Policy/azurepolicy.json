@@ -37,7 +37,7 @@
                     },
                     {
                         "field": "Microsoft.Web/sites/config/minTlsVersion",
-                        "equals": "[parameters('minTLSVersion']"
+                        "notEquals": "[parameters('minTLSVersion')]"
                     }
                 ]
             },

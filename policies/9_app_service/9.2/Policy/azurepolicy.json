@@ -14,10 +14,11 @@
                     "description": "Enable or disable the execution of the policy"
                 },
                 "allowedValues": [
-                    "AuditIfNotExists",
+                    "Audit",
+                    "Deny",
                     "Disabled"
                 ],
-                "defaultValue": "AuditIfNotExists"
+                "defaultValue": "Audit"
             }
         },
         "policyRule": {
@@ -26,23 +27,15 @@
                     {
                         "field": "type",
                         "equals": "Microsoft.Web/sites"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/httpsOnly",
+                        "notEquals": "true"
                     }
                 ]
             },
             "then": {
-                "effect": "[parameters('effect')]",
-                "details": {
-                    "type": "Microsoft.Web/sites",
-                    "name": "[field('name')]",
-                    "existenceCondition": {
-                        "allOf": [
-                            {
-                                "field": "Microsoft.Web/sites/httpsOnly",
-                                "equals": "true"
-                            }
-                        ]
-                    }
-                }
+                "effect": "[parameters('effect')]"
             }
         }
     }
