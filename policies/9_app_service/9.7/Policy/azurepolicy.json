@@ -1,0 +1,81 @@
+{
+    "properties": {
+        "displayName": "Ensure that 'PHP version' is the latest, if used to run the web app 9.7.",
+        "description": "Periodically newer versions are released for PHP software either due to security flaws or to include additional functionality. Using the latest PHP version for web apps is recommended in order to take advantage of security fixes, if any, and/or additional functionalities of the newer version.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "Audit",
+                    "Disabled"
+                ],
+                "defaultValue": "Audit"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "anyOf": [
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Web/sites/config"
+                            },
+                            {
+                                "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                                "equals": ""
+                            },
+                            {
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.phpVersion",
+                                            "equals": "7.3"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.phpVersion",
+                                            "equals": ""
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "field": "type",
+                                "equals": "Microsoft.Web/sites/config"
+                            },
+                            {
+                                "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                                "contains": "PHP"
+                            },
+                            {
+                                "not": {
+                                    "allOf": [
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                                            "equals": "PHP|7.3"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}
