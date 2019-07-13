@@ -3,7 +3,7 @@
 - Implement Azure policies in order to enforce the [Center for Internet Security guidelines for Azure](https://www.cisecurity.org/benchmark/azure/ "CIS Link").
 
 ## Current Status
-- Sections 1,2,3, and 9 are complete and validated. If you do not see a Policy for a control then that means that at this time it cannot be done via policy.
+- Sections 1,2,3, 8, and 9 are complete and validated. If you do not see a Policy for a control then that means that at this time it cannot be done via policy.
 - Sections 4-8 are mostly done, but are undergoing final testing. Once testing of existing policies is complete I will make a final pass through these sections to assess if any additional controls can be handled via policy.
 
 ## Disclaimer

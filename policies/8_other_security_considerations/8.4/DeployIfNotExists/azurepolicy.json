@@ -1,10 +1,24 @@
 {
     "properties": {
-        "displayName": "Ensure the key vault is recoverable. CIS Control 8.4",
+        "displayName": "Ensure the key vault is recoverable 8.4",
         "description": "The key vault contains object keys, secrets and certificates. Accidental unavailability of a key vault can cause immediate data loss or loss of security functions (authentication, validation, verification, non-repudiation, etc.) supported by the key vault objects. It is recommended the key vault be made recoverable by enabling the 'Do Not Purge' and 'Soft Delete' functions. This is in order to prevent loss of encrypted data including storage accounts, SQL databases, and/or dependent services provided by key vault objects (Keys, Secrets, Certificates) etc., as may happen in the case of accidental deletion by a user or from disruptive activity by a malicious user.",
         "mode": "All",
         "metadata": {
             "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "DeployIfNotExists",
+                    "Disabled"
+                ],
+                "defaultValue": "DeployIfNotExists"
+            }
         },
         "policyRule": {
             "if": {
@@ -36,7 +50,7 @@
                 ]
             },
             "then": {
-                "effect": "DeployIfNotExists",
+                "effect": "[parameters('effect')]",
                 "details": {
                     "type": "Microsoft.KeyVault/vaults",
                     "roleDefinitionIds": [
