@@ -12,8 +12,10 @@
                         "equals": ""
                     },
                     {
-                        "field": "Microsoft.Web/sites/config/web.javaVersion",
-                        "exists": "true"
+                        "not": {
+                            "field": "Microsoft.Web/sites/config/web.javaVersion",
+                            "exists": false
+                        }
                     },
                     {
                         "not": {
