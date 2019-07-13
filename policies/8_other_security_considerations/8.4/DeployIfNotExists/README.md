@@ -1,7 +1,7 @@
 # 8.4 Ensure the key vault is recoverable
 
 ## Policy Effects
-Audit
+DeployIfNotExists
 Disabled
 
 ## Azure Policy Docs

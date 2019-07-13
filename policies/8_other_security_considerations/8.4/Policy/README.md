@@ -2,6 +2,7 @@
 
 ## Policy Effects
 Audit
+Deny
 Disabled
 
 ## Azure Policy Docs
