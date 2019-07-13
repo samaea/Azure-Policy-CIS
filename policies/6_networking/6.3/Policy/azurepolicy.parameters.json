@@ -1,14 +1,14 @@
 {
     "effect": {
-        "type": "string",
-        "defaultValue": "Audit",
+        "type": "String",
+        "metadata": {
+            "displayName": "Effect",
+            "description": "Enable or disable the execution of the policy"
+        },
         "allowedValues": [
             "Audit",
             "Disabled"
         ],
-        "metadata": {
-            "displayName": "Effect",
-            "description": "Enable or disable the execution of the policy"
-        }
+        "defaultValue": "Audit"
     }
 }
