@@ -10,8 +10,16 @@
                 "equals": "Unattached"
             },
             {
-                "field": "Microsoft.Compute/disks/encryptionSettings.diskEncryptionKey",
-                "exists": false
+                "anyOf": [
+                    {
+                        "field": "Microsoft.Compute/disks/encryptionSettingsCollection.enabled",
+                        "equals": false
+                    },
+                    {
+                        "field": "Microsoft.Compute/disks/encryptionSettingsCollection.enabled",
+                        "exists": false
+                    }
+                ]
             }
         ]
     },
