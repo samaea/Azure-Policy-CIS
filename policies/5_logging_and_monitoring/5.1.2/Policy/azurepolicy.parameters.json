@@ -6,6 +6,7 @@
             "Audit",
             "Disabled"
         ],
+        "defaultValue":"Audit",
         "metadata": {
             "displayName": "Effect",
             "description": "Enable or disable the execution of the policy"

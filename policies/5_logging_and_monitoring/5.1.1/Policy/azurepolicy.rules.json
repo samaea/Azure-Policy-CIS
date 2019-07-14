@@ -8,7 +8,7 @@
         ]
     },
     "then": {
-        "effect": "auditIfNotExists",
+        "effect": "[parameters('effect')]",
         "details": {
             "type": "Microsoft.Insights/logprofiles"
         }

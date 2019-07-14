@@ -3,10 +3,10 @@
         "type": "string",
         "defaultValue": "Audit",
         "allowedValues": [
-            "Audit",
+            "AuditIfNotExists",
             "Disabled"
         ],
-        "defaultValue": "Audit",
+        "defaultValue": "AuditIfNotExists",
         "metadata": {
             "displayName": "Effect",
             "description": "Enable or disable the execution of the policy"
