@@ -1,0 +1,52 @@
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "equals": "Microsoft.Resources/subscriptions"
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+            "type": "Microsoft.Insights/ActivityLogAlerts",
+            "existenceCondition": {
+                "allOf": [
+                    {
+                        "allOf": [
+                            {
+                                "not": {
+                                    "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].field",
+                                    "notEquals": "category"
+                                }
+                            },
+                            {
+                                "not": {
+                                    "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].equals",
+                                    "notEquals": "Administrative"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "allOf": [
+                            {
+                                "not": {
+                                    "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].field",
+                                    "notEquals": "operationName"
+                                }
+                            },
+                            {
+                                "not": {
+                                    "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].equals",
+                                    "notEquals": "Microsoft.Network/networkSecurityGroups/securityRules/write"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "properties": {
+        "displayName": "Ensure that Activity Log Alert exists for Delete Security Solution  5.2.7.",
+        "description": "Create an activity log alert for the Delete Security Solution event.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "AuditIfNotExists",
+                    "Disabled"
+                ],
+                "defaultValue": "AuditIfNotExists"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Resources/subscriptions"
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]",
+                "details": {
+                    "type": "Microsoft.Insights/ActivityLogAlerts",
+                    "existenceCondition": {
+                        "allOf": [
+                            {
+                                "allOf": [
+                                    {
+                                        "not": {
+                                            "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].field",
+                                            "notEquals": "category"
+                                        }
+                                    },
+                                    {
+                                        "not": {
+                                            "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].equals",
+                                            "notEquals": "Security"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "allOf": [
+                                    {
+                                        "not": {
+                                            "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].field",
+                                            "notEquals": "resourceType"
+                                        }
+                                    },
+                                    {
+                                        "not": {
+                                            "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].equals",
+                                            "notEquals": "microsoft.security/securitysolutions"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "allOf": [
+                                    {
+                                        "not": {
+                                            "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].field",
+                                            "notEquals": "operationName"
+                                        }
+                                    },
+                                    {
+                                        "not": {
+                                            "field": "Microsoft.Insights/ActivityLogAlerts/condition.allOf[*].equals",
+                                            "notEquals": "Microsoft.Security/securitySolutions/delete"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

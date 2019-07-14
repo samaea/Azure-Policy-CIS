@@ -32,7 +32,11 @@
             "then": {
                 "effect": "[parameters('effect')]",
                 "details": {
-                    "type": "Microsoft.Insights/logprofiles"
+                    "type": "Microsoft.Insights/logprofiles",
+                    "existenceCondition": {
+                        "field": "Microsoft.Insights/logProfiles/categories",
+                        "exists": true
+                    }
                 }
             }
         }
