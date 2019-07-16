@@ -1,0 +1,41 @@
+{
+    "properties": {
+        "displayName": "Ensure that 'Email service and co-administrators' is 'Enabled' 4.7",
+        "description": "Enable SSL connection on MYSQL Servers.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "AuditIfNotExists",
+                    "Disabled"
+                ],
+                "defaultValue": "AuditIfNotExists"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "field": "type",
+                "equals": "Microsoft.Sql/managedInstances"
+            },
+            "then": {
+                "effect": "[parameters('effect')]",
+                "details": {
+                    "type": "Microsoft.Sql/servers/securityAlertPolicies",
+                    "name": "default",
+                    "existenceCondition": {
+                        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAccountAdmins",
+                        "equals": "true"
+                    }
+                }
+            }
+        }
+    }
+}
