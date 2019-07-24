@@ -1,6 +1,6 @@
 {
     "properties": {
-        "displayName": "Ensure that Activity Log Retention is set 365 days or greater 5.1.2",
+        "displayName": "Ensure that Activity Log Retention is set 365 days or greater CIS Control 5.1.2",
         "description": "Ensure activity log retention is set for 365 days or greater.",
         "mode": "All",
         "metadata": {

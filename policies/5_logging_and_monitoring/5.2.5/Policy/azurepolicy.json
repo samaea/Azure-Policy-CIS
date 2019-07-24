@@ -1,6 +1,6 @@
 {
     "properties": {
-        "displayName": "Ensure that activity log alert exists for the Delete Network Security Group Rule 5.2.5",
+        "displayName": "Ensure that activity log alert exists for the Delete Network Security Group Rule CIS Control CIS Control 5.2.5",
         "description": "Create an activity log alert for the Delete Network Security Group Rule event.",
         "mode": "All",
         "metadata": {

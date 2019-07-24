@@ -1,6 +1,6 @@
 {
     "properties": {
-        "displayName": "Ensure the web app has 'Client Certificates (Incoming client certificates)' set to 'On' 9.4.",
+        "displayName": "Ensure the web app has 'Client Certificates (Incoming client certificates)' set to 'On' CIS Control 9.4.",
         "description": "Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.",
         "mode": "All",
         "metadata": {

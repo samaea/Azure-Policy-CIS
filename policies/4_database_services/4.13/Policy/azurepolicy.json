@@ -1,6 +1,6 @@
 {
     "properties": {
-        "displayName": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for PostgreSQL Database Server 4.13.",
+        "displayName": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for PostgreSQL Database Server CIS Control 4.13.",
         "description": "Enable SSL connection on PostgreSQL Servers.",
         "mode": "All",
         "metadata": {

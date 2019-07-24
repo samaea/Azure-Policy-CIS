@@ -1,7 +1,7 @@
 {
     "properties": {
         "displayName": "Ensure that 'Automatic provisioning of monitoring agent' is set to 'On'. CIS Control 2.2",
-        "description": "Enable automatic provisioning of the monitoring agent to collect security data.",
+        "description": "Deploy if not Exists. Enable automatic provisioning of the monitoring agent to collect security data.",
         "mode": "All",
         "metadata": {
             "category": "CIS"

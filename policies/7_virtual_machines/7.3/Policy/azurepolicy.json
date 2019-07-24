@@ -1,6 +1,6 @@
 {
     "properties": {
-        "displayName": "Ensure that only approved extensions are installed 7.3.",
+        "displayName": "Ensure that only approved extensions are installed CIS Control 7.3.",
         "description": "Ensure that unattached disks in a subscription are encrypted.",
         "mode": "All",
         "metadata": {
