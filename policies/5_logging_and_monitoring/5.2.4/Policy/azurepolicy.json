@@ -1,6 +1,6 @@
 {
     "properties": {
-        "displayName": "Ensure that Activity Log Alert exists for Create or Update Network Security Group Rule 5.2.4",
+        "displayName": "Ensure that Activity Log Alert exists for Create or Update Network Security Group Rule CIS Control 5.2.4",
         "description": "Create an activity log alert for the Create or Update Network Security Group Rule event.",
         "mode": "All",
         "metadata": {

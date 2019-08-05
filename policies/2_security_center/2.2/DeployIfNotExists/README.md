@@ -23,3 +23,9 @@ vulnerabilities, endpoint protection, and provides alerts.
 
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmrajess%2FAzure-Policy-CIS%2Fmaster%2Fpolicies%2F2_security_center%2F2.2%2FDeployIfNotExists%2Fazurepolicy.json)
 [![Deploy to Azure Gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmrajess%2FAzure-Policy-CIS%2Fmaster%2Fpolicies%2F2_security_center%2F2.2%2FDeployIfNotExists%2Fazurepolicy.json)
+
+
+## IMPORTANT
+Need to change the "roleDefinitionIds" in azurepolicy.json to match the Azure Role of "Contributor" in an organization. To determine the ID run the following command. 
+
+    az role definition list --name 'Contributor'

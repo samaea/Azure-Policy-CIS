@@ -1,6 +1,6 @@
 {
     "properties": {
-        "displayName": "Ensure that Activity Log Alert exists for Create or Update Security Solution 5.2.6.",
+        "displayName": "Ensure that Activity Log Alert exists for Create or Update Security Solution CIS Control 5.2.6.",
         "description": "Create an activity log alert for the Create or Update Security Solution event.",
         "mode": "All",
         "metadata": {
