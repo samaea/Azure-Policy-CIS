@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure that security contact 'Phone number' is set. CIS Control 2.17",
+        "description": "Provide a security contact phone number.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

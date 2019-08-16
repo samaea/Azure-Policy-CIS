@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure that 'Secure transfer required' is set to 'Enabled'. CIS Control 3.1",
+        "description": "Enable data encryption is transit.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

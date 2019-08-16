@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure 'Enforce SSL connection' is set to 'ENABLED' for MySQL Database Server CIS Control 4.11",
+        "description": "Enable SSL connection on MYSQL Servers.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

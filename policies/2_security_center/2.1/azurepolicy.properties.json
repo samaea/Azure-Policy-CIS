@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure that standard pricing tier is selected. CIS Control 2.1",
+        "description": "The standard pricing tier enables threat detection for networks and virtual machines, providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

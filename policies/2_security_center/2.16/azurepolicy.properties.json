@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure that 'Security contact emails' is set. CIS Control 2.16",
+        "description": "Provide a security contact email address.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}
