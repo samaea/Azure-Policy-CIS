@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure 'Trusted Microsoft Services' is enabled for Storage Account access. CIS Control 3.8",
+        "description": "Some Microsoft services that interact with storage accounts operate from networks that can't be granted access through network rules. To help this type of service work as intended, allow the set of trusted Microsoft services to bypass the network rules. These services will then use strong authentication to access the storage account.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}
