@@ -1,0 +1,24 @@
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "Type",
+                "equals": "Microsoft.Resources/subscriptions"
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+            "type": "Microsoft.Security/autoProvisioningSettings",
+            "existenceCondition": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Security/autoProvisioningSettings"
+                    }
+                ]
+            }
+        }
+    }
+}
