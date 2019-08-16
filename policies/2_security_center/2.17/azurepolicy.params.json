@@ -1,0 +1,21 @@
+{
+    "phone": {
+        "type": "string",
+        "metadata": {
+            "description": "The securityContact phone number to enforce",
+            "displayName": "Security Contact phone number"
+        }
+    },
+    "effect": {
+        "type": "string",
+        "defaultValue": "Audit",
+        "allowedValues": [
+            "Audit",
+            "Disabled"
+        ],
+        "metadata": {
+            "displayName": "Effect",
+            "description": "Enable or disable the execution of the policy"
+        }
+    }
+}
