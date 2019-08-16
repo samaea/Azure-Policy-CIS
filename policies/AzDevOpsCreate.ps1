@@ -25,19 +25,27 @@ function Select-Policies {
     Param
     (
         [Parameter(Mandatory = $true)]
-        [System.IO.DirectoryInfo[]]$PolicyFolders
+        [System.IO.FileInfo[]]$PolicyFolders
     )
 
     Write-Verbose "Processing policies"
     $policyList = @()
+
+
     foreach ($policyDefinition in $PolicyFolders) {
+
         $policy = New-Object -TypeName PolicyDef
-        $policy.PolicyName = $policyDefinition.Name
-        $policy.PolicyRulePath = $($policyDefinition.FullName + "\azurepolicy.def.json")
-        $policy.PolicyParamPath = $($policyDefinition.FullName + "\azurepolicy.params.json")
-        $policy.PolicyPropertiesPath = $($policyDefinition.FullName + "\azurepolicy.properties.json")
+        $policy.PolicyRulePath = $($policyDefinition.Directory.FullName + "\azurepolicy.def.json")
+        $policy.PolicyParamPath = $($policyDefinition.Directory.FullName + "\azurepolicy.params.json")
+        $policy.PolicyPropertiesPath = $($policyDefinition.Directory.FullName + "\azurepolicy.properties.json")
         $policyList += $policy
+
+
+
+
     }
+
+               
 
     return $policyList
 }
@@ -55,12 +63,18 @@ function Add-Policies {
     $policyDefList = @()
     foreach ($policy in $Policies) {
         $policyProperties = Get-Content $policy.PolicyPropertiesPath | ConvertFrom-Json;
-        $policyNameGuid = New-Guid;
 
+        # Take the policy's display name and only use the first 64 characters to avoid hitting the 64 character length limit.
+        # Using a randomly generated policy name results in duplicates of the same policy instead of updating an existing one
+        # when running the command more than once.
 
-        $policyDef = New-AzureRmPolicyDefinition -Name $policyNameGuid -DisplayName $policyProperties.properties.displayName -Policy $policy.PolicyRulePath -Parameter $policy.PolicyParamPath -SubscriptionId $subscriptionId -Description $policyProperties.properties.description -Metadata "{`"category`":`"$($policyProperties.properties.metadata.category)`"}" -Mode $policyProperties.properties.mode
+        $policyName = $policyProperties.properties.displayName[0..63] -join ""
+        
+        $policyDef = New-AzureRmPolicyDefinition -Name $policyName -DisplayName $policyProperties.properties.displayName -Policy $policy.PolicyRulePath -Parameter $policy.PolicyParamPath -SubscriptionId $subscriptionId -Description $policyProperties.properties.description -Metadata "{`"category`":`"$($policyProperties.properties.metadata.category)`"}" -Mode $policyProperties.properties.mode
         $policyDefList += $policyDef
+
     }
+
     return $policyDefList
 }
 
@@ -68,8 +82,17 @@ $subscriptionId = (Get-AzureRmSubscription -SubscriptionName $subscriptionName).
 Write-Verbose $policyDefRootFolder
 Write-Verbose $subscriptionId
 
-#get list of policy folders
-$policies = Select-Policies -PolicyFolders (Get-ChildItem -Path $policyDefRootFolder -Directory)
+#get list of policy folders by recursively looking for directory that have a file with the prefix *.rules.json
+
+$foldersWithPolicies = Get-ChildItem -Path $policyDefRootFolder -Recurse *.def.json
+
+ if($foldersWithPolicies.length -eq 0){
+
+    throw 'ERROR: No policies found.'
+}
+
+$policies = Select-Policies -PolicyFolders ($foldersWithPolicies)
+
 $policyDefinitions = Add-Policies -Policies $policies -subscriptionId $subscriptionId
 $policyDefsJson = ($policyDefinitions | ConvertTo-Json -Depth 10 -Compress)
 
