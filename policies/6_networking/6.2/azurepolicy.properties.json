@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure that SSH access is restricted from the internet CIS Control 6.2.",
+        "description": "Disable SSH access on network security groups from the Internet.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}
