@@ -1,0 +1,57 @@
+{
+    "if": {
+        "anyOf": [
+            {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Web/sites/config"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                        "equals": ""
+                    },
+                    {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "field": "Microsoft.Web/sites/config/web.pythonVersion",
+                                    "equals": "3.4"
+                                },
+                                {
+                                    "field": "Microsoft.Web/sites/config/web.pythonVersion",
+                                    "equals": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Web/sites/config"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                        "contains": "PYTHON"
+                    },
+                    {
+                        "not": {
+                            "allOf": [
+                                {
+                                    "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                                    "equals": "PYTHON|3.7"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effect')]"
+    }
+}

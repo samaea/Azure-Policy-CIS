@@ -1,0 +1,121 @@
+{
+    "if": {
+        "anyOf": [
+            {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Web/sites/config"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                        "equals": ""
+                    },
+                    {
+                        "not": {
+                            "field": "Microsoft.Web/sites/config/web.javaVersion",
+                            "exists": false
+                        }
+                    },
+                    {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "allOf": [
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaVersion",
+                                            "equals": "11"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainer",
+                                            "equals": "TOMCAT"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainerVersion",
+                                            "equals": "9.0"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "allOf": [
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaVersion",
+                                            "equals": "11"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainer",
+                                            "equals": "JETTY"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainerVersion",
+                                            "equals": "9.3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "allOf": [
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaVersion",
+                                            "equals": "1.8"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainer",
+                                            "equals": "TOMCAT"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainerVersion",
+                                            "equals": "9.0"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "allOf": [
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaVersion",
+                                            "equals": "1.8"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainer",
+                                            "equals": "JETTY"
+                                        },
+                                        {
+                                            "field": "Microsoft.Web/sites/config/web.javaContainerVersion",
+                                            "equals": "9.3"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Web/sites/config"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                        "equals": "TOMCAT|8.5-jre8"
+                    }
+                ]
+            },
+            {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Web/sites/config"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                        "equals": "TOMCAT|8.5-java11"
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effect')]"
+    }
+}
