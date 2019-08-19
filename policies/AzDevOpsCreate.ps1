@@ -10,7 +10,7 @@ fees, that arise or result from the use or distribution of the Sample Code.
 #>
 
 $policyDefRootFolder = "C:\Users\hussel\Documents\GitHub\Azure-Policy-CIS\policies"
-$subscriptionName = "Microsoft Azure Internal Consumption"
+$subscriptionId = "41d3454f-dcd2-49a5-9d62-066d25487a3d"
 
 class PolicyDef {
     [string]$PolicyName
@@ -64,13 +64,25 @@ function Add-Policies {
     foreach ($policy in $Policies) {
         $policyProperties = Get-Content $policy.PolicyPropertiesPath | ConvertFrom-Json;
 
-        # Take the policy's display name and only use the first 64 characters to avoid hitting the 64 character length limit.
-        # Using a randomly generated policy name results in duplicates of the same policy instead of updating an existing one
-        # when running the command more than once.
+        # Take the policy's display name and strip out non-word characters (e.g. special character). Only use the first 64 characters
+		# to avoid hitting the 64 character length limit. Afterwards, it converts uppercase letters to lowercase. Using a randomly
+        # generated policy name results in duplicates of the same policy instead of updating an existing one when running the command
+        # more than once.
 
-        $policyName = $policyProperties.properties.displayName[0..63] -join ""
+		$policyName = $policyProperties.properties.displayName -replace "\W"
+        $policyName = $policyName[0..63] -join ""
+        $policyName = $policyName.ToLower();
         
-        $policyDef = New-AzureRmPolicyDefinition -Name $policyName -DisplayName $policyProperties.properties.displayName -Policy $policy.PolicyRulePath -Parameter $policy.PolicyParamPath -SubscriptionId $subscriptionId -Description $policyProperties.properties.description -Metadata "{`"category`":`"$($policyProperties.properties.metadata.category)`"}" -Mode $policyProperties.properties.mode
+        ## DEBUG INFO
+        Write-Host "Policy name: $policyName"
+        Write-Host "Display Name:  $($policyProperties.properties.displayName)"
+        Write-Host "Policy Rule Path: $($policy.PolicyRulePath)"
+        Write-Host "Policy Params: $($policy.PolicyParamPath)"
+        Write-Host "Subscription ID: $subscriptionId"
+        Write-Host "Metadata: category=$($policyProperties.properties.metadata.category)"
+        #
+
+        $policyDef = az policy definition create --name $policyName --display-name $($policyProperties.properties.displayName) --rules $($policy.PolicyRulePath) --params $($policy.PolicyParamPath) --subscription $subscriptionId --description $($policyProperties.properties.description) --metadata "category=$($policyProperties.properties.metadata.category)" --mode $($policyProperties.properties.mode)
         $policyDefList += $policyDef
 
     }
@@ -78,7 +90,6 @@ function Add-Policies {
     return $policyDefList
 }
 
-$subscriptionId = (Get-AzureRmSubscription -SubscriptionName $subscriptionName).Id
 Write-Verbose $policyDefRootFolder
 Write-Verbose $subscriptionId
 
