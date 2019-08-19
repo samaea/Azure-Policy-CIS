@@ -1,0 +1,57 @@
+{
+    "if": {
+        "anyOf": [
+            {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Web/sites/config"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                        "equals": ""
+                    },
+                    {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "field": "Microsoft.Web/sites/config/netFrameworkVersion",
+                                    "equals": "v4.0"
+                                },
+                                {
+                                    "field": "Microsoft.Web/sites/config/netFrameworkVersion",
+                                    "equals": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Web/sites/config"
+                    },
+                    {
+                        "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                        "contains": "DOTNETCORE"
+                    },
+                    {
+                        "not": {
+                            "allOf": [
+                                {
+                                    "field": "Microsoft.Web/sites/config/web.linuxFxVersion",
+                                    "equals": "DOTNETCORE|2.2"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effect')]"
+    }
+}

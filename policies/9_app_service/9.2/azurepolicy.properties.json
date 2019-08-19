@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure web app redirects all HTTP traffic to HTTPS in Azure App Service CIS Control 9.2.",
+        "description": "Azure Web Apps allows sites to run under both HTTP and HTTPS by default. Web apps can be accessed by anyone using non-secure HTTP links by default. Non-secure HTTP requests can be restricted and all HTTP requests redirected to the secure HTTPS port. It is recommended to enforce HTTPS-only traffic.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure that Activity Log Alert exists for Update Security Policy CIS Control 5.2.9.",
+        "description": "Create an activity log alert for the Update Security Policy event.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure the log profile captures activity logs for all regions including global CIS Control 5.1.4",
+        "description": "Configure the log profile to export activities from all Azure supported regions/locations including global.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

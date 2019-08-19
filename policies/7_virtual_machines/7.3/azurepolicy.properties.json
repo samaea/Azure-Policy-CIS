@@ -1,0 +1,10 @@
+{
+    "properties": {
+        "displayName": "Ensure that unattached disks in a subscription are encrypted CIS Control 7.3.",
+        "description": "Ensure that unattached disks in a subscription are encrypted.",
+        "mode": "All",
+        "metadata": {
+            "category": "CIS"
+        }
+    }
+}

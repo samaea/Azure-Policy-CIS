@@ -1,0 +1,39 @@
+{
+    "if": {
+        "allOf": [
+            {
+                "field": "type",
+                "equals": "Microsoft.Insights/logprofiles"
+            },
+            {
+                "field": "name",
+                "equals": "default"
+            },
+            {
+                "anyOf": [
+                    {
+                        "field": "Microsoft.Insights/logProfiles/categories[*]",
+                        "notIn": [
+                            "Write"
+                        ]
+                    },
+                    {
+                        "field": "Microsoft.Insights/logProfiles/categories[*]",
+                        "notIn": [
+                            "Delete"
+                        ]
+                    },
+                    {
+                        "field": "Microsoft.Insights/logProfiles/categories[*]",
+                        "notIn": [
+                            "Action"
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effect')]"
+    }
+}
