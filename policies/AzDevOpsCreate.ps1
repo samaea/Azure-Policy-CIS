@@ -73,14 +73,14 @@ function Add-Policies {
         $policyName = $policyName[0..63] -join ""
         $policyName = $policyName.ToLower();
         
-        ## DEBUG INFO
-        Write-Host "Policy name: $policyName"
-        Write-Host "Display Name:  $($policyProperties.properties.displayName)"
-        Write-Host "Policy Rule Path: $($policy.PolicyRulePath)"
-        Write-Host "Policy Params: $($policy.PolicyParamPath)"
-        Write-Host "Subscription ID: $subscriptionId"
-        Write-Host "Metadata: category=$($policyProperties.properties.metadata.category)"
-        #
+        ## DEBUG INFO ##
+        #Write-Host "Policy name: $policyName"
+        #Write-Host "Display Name:  $($policyProperties.properties.displayName)"
+        #Write-Host "Policy Rule Path: $($policy.PolicyRulePath)"
+        #Write-Host "Policy Params: $($policy.PolicyParamPath)"
+        #Write-Host "Subscription ID: $subscriptionId"
+        #Write-Host "Metadata: category=$($policyProperties.properties.metadata.category)"
+        ##################
 
         $policyDef = az policy definition create --name $policyName --display-name $($policyProperties.properties.displayName) --rules $($policy.PolicyRulePath) --params $($policy.PolicyParamPath) --subscription $subscriptionId --description $($policyProperties.properties.description) --metadata "category=$($policyProperties.properties.metadata.category)" --mode $($policyProperties.properties.mode)
         $policyDefList += $policyDef
@@ -93,7 +93,7 @@ function Add-Policies {
 Write-Verbose $policyDefRootFolder
 Write-Verbose $subscriptionId
 
-#get list of policy folders by recursively looking for directory that have a file with the prefix *.rules.json
+#get list of policy folders by recursively looking for directory that have a file with the prefix *.def.json
 
 $foldersWithPolicies = Get-ChildItem -Path $policyDefRootFolder -Recurse *.def.json
 
