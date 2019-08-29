@@ -156,7 +156,7 @@
 									"policyDefinitionId": "{SCOPE}/providers/Microsoft.Authorization/policyDefinitions/ensuretrustedmicrosoftservicesisenabledforstorageaccountaccessci"
 								},
 								{
-									"policyDefinitionId": "{SCOPE}/41d3454f-dcd2-49a5-9d62-066d25487a3d/providers/Microsoft.Authorization/policyDefinitions/ensurethatrdpaccessisrestrictedfromtheinternetciscontrol61"
+									"policyDefinitionId": "{SCOPE}/providers/Microsoft.Authorization/policyDefinitions/ensurethatrdpaccessisrestrictedfromtheinternetciscontrol61"
 								},
 								{
 									"policyDefinitionId": "{SCOPE}/providers/Microsoft.Authorization/policyDefinitions/ensurethatsshaccessisrestrictedfromtheinternetciscontrol62"
