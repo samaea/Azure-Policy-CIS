@@ -7,5 +7,5 @@ This initiative combines all the CIS available builtin policies with the custom 
  - You will need to **modify the policyset-definition.json** file and find all the **{SCOPE}** references and replace them with the actual location of the custom policy within your subscription/management group. For example, you could replace **{SCOPE}** with **/providers/Microsoft.Management/managementGroups/GlobalMgmtGroup/**
 
 ```powershell
-az policy set-definition create --name PSExampleSetDefinition --definitions '{PATHTOINITIATIVE}\policyset-definition.json' --management-group {MANAGEMENTGROUPNAME}
+az policy set-definition create --name {NAMEOFYOURINITIATIVE} --definitions '{PATHTOINITIATIVE}\policyset-definition.json' --management-group {MANAGEMENTGROUPNAME}
 ```
